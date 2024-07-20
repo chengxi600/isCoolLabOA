@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cartReducer from './data/cartSlice';
+import historyReducer from './data/historySlice';
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
+    history: historyReducer
   }
 })
 
