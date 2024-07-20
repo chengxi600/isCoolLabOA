@@ -1,5 +1,4 @@
-import { Typography, ListItem, Grid, IconButton, List, ListItemText, Paper, Divider, Box } from "@mui/material";
-import React from "react";
+import { Typography, Grid, List, Paper, Divider, Box } from "@mui/material";
 import CartItem from "../components/CartItem";
 
 export default function CartPage() {

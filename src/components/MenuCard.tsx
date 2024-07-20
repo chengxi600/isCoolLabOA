@@ -40,7 +40,7 @@ export default function MenuCard({
     );
 
     return (
-        <Card sx={{ maxWidth: 345, height: "100%", display: "flex", flexDirection: "column" }}>
+        <Card elevation={3} sx={{ maxWidth: 345, height: "100%", display: "flex", flexDirection: "column" }}>
           <CardHeader
             title={title}
             subheader={`$${price} NTD`}
