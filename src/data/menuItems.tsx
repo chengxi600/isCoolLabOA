@@ -6,12 +6,6 @@ export interface MenuItemProps {
     price: number,
 }
 
-export interface OrderCollectionProps {
-    id: number,
-    orders: MenuItemProps[],
-    quantities: number[],
-}
-
 export const riceData: MenuItemProps[] = [
     {
         id: 1,

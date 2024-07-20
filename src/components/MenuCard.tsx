@@ -1,8 +1,11 @@
 import { Card, CardHeader, CardMedia, CardContent, Typography, CardActions, IconButton, Snackbar, Alert } from "@mui/material";
 import { MenuItemProps } from "../data/menuItems";
+import { useAppSelector, useAppDispatch } from '../hooks'
+import { addOneToCart } from "../data/cartSlice";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CloseIcon from '@mui/icons-material/Close';
 import React from "react";
+import { ItemInfo } from "../data/cartSlice";
 
 
 export default function MenuCard({
@@ -13,9 +16,25 @@ export default function MenuCard({
 
     const { title, image, description, price } = menuData
     const [open, setOpen] = React.useState(false);
+    const quantity = useAppSelector((state) => {
+      if(state.cart.items.hasOwnProperty(title)) {
+        return state.cart.items[title].quantity
+      } else{
+        return 0
+      }
+    })
+    const dispatch = useAppDispatch()
 
     const handleClick = () => {
       setOpen(true);
+
+      //add to cart
+      const item: ItemInfo = {
+        name: title,
+        price: price,
+        quantity: 0
+      }
+      dispatch(addOneToCart(item))
     };
   
     const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
@@ -60,6 +79,7 @@ export default function MenuCard({
               <IconButton color="primary" aria-label="add to shopping cart" onClick={handleClick}>
                   <AddShoppingCartIcon />
               </IconButton>
+              <Typography>In Cart: x{quantity}</Typography>
               <Snackbar
                   open={open}
                   autoHideDuration={1000}
