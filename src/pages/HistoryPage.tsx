@@ -1,7 +1,7 @@
 import { Copyright } from "@mui/icons-material";
 import { Button, Container, Grid, Paper } from "@mui/material";
-import { riceData } from "../../data/menuItems";
-import Order from "../Order";
+import { riceData } from "../data/menuItems";
+import Order from "../components/Order";
 
 export default function HistoryPage() {
 

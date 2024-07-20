@@ -3,12 +3,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import MenuPage from './components/pages/MenuPage';
+import MenuPage from './pages/MenuPage';
 import NavDrawer from './components/NavDrawer';
-import HomePage from './components/pages/HomePage';
-import CartPage from './components/pages/CartPage';
-import HistoryPage from './components/pages/HistoryPage';
-import InfoPage from './components/pages/InfoPage';
+import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
+import HistoryPage from './pages/HistoryPage';
+import InfoPage from './pages/InfoPage';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();

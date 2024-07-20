@@ -1,6 +1,6 @@
 import { Container, Divider, Grid, Link, Typography } from "@mui/material";
-import MenuCard from "../MenuCard";
-import { drinkData, noodleData, riceData } from "../../data/menuItems";
+import MenuCard from "../components/MenuCard";
+import { drinkData, noodleData, riceData } from "../data/menuItems";
 
 function Copyright(props: any) {
   return (
