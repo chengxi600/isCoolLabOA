@@ -3,19 +3,25 @@ import { MenuItemProps } from "../data/menuItems";
 import { useAppSelector, useAppDispatch } from '../hooks'
 import { addOneToCart } from "../data/cartSlice";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import CloseIcon from '@mui/icons-material/Close';
 import React from "react";
 import { ItemInfo } from "../data/cartSlice";
 
-
+/**
+ * Card Component for holding a menu item.
+ * @param menuData a MenuItemProps with data to be shown on card component
+ */
 export default function MenuCard({
     menuData
 }: {
     menuData: MenuItemProps
 }) {
-
     const { title, image, description, price } = menuData
+    const dispatch = useAppDispatch()
+
+    //states for snackbar
     const [open, setOpen] = React.useState(false);
+
+    //get quantity of item in cart, else 0
     const quantity = useAppSelector((state) => {
       if(state.cart.items.hasOwnProperty(title)) {
         return state.cart.items[title].quantity
@@ -23,12 +29,11 @@ export default function MenuCard({
         return 0
       }
     })
-    const dispatch = useAppDispatch()
 
     const handleClick = () => {
       setOpen(true);
 
-      //add to cart
+      //add to one item to cart
       const item: ItemInfo = {
         name: title,
         price: price,

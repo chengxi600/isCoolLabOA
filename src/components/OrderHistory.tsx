@@ -8,6 +8,11 @@ import Title from './Title';
 import { Typography } from '@mui/material';
 import { Order } from '../data/historySlice';
 
+/**
+ * Component for a single order history.
+ * @param orderNum the order number
+ * @param order an Order with data to be displayed in the order history table
+ */
 export default function OrderHistory({
   orderNum,
   order
@@ -16,6 +21,7 @@ export default function OrderHistory({
     order: Order
 }) {
 
+  //construct list of order items
   let historyList = [];
   for(let prop in order.order) {
     historyList.push(

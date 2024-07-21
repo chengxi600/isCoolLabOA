@@ -9,6 +9,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import { Link } from 'react-router-dom';
 
+//main list of buttons for side navigation bar
 export const mainListItems = (
   <React.Fragment>
     <ListItemButton component={Link} to={"home"}>
@@ -38,6 +39,7 @@ export const mainListItems = (
   </React.Fragment>
 );
 
+//secondary list of items for side navigation bar
 export const secondaryListItems = (
   <React.Fragment>
     <ListItemButton component={Link} to={"info"}>

@@ -12,13 +12,15 @@ export const historySlice = createSlice({
   name: 'history',
   initialState,
   reducers: {
+    //adds a given order to history 
     addToHistory: (state, action: PayloadAction<Order>) => {
-      //if cart not empty
+      //if cart not empty, add order to history array
       if(Object.keys(action.payload.order).length !== 0) {
         state.push(action.payload)
       }
     },
-    clearAllHistory: (state) => {
+    //clears all history
+    clearAllHistory: () => {
       return initialState
     },
   }

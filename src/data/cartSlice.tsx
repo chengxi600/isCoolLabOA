@@ -18,8 +18,9 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    //adds a given item to the cart
     addOneToCart: (state, action: PayloadAction<ItemInfo>) => {
-      //if item is already in cart
+      //if item is already in cart, increment quantity. Else, create new key.
       if(state.items.hasOwnProperty(action.payload.name)) {
         state.items[action.payload.name].quantity += 1
       } else{
@@ -30,26 +31,28 @@ export const cartSlice = createSlice({
         }
       }
     },
+    //removes a given item from the cart
     removeOneFromCart: (state, action: PayloadAction<ItemInfo>) => {
-      //if item not in cart
+      //if item not in cart, do nothing
       if(!state.items.hasOwnProperty(action.payload.name)) {
         return 
       }
 
-      //if item quantity > 1
+      //if item quantity > 1, decrement quantity. If one item left, remove from cart.
       if(state.items[action.payload.name].quantity > 1) {
         state.items[action.payload.name].quantity -= 1
       } else{
-        //else remove item 
         delete state.items[action.payload.name]
       }
     },
+    //remove all quantities of a given item from cart.
     removeAllFromCart: (state, action: PayloadAction<ItemInfo>) => {
-      //if item in cart
+      //if item in cart, remove the item from cart.
       if(state.items.hasOwnProperty(action.payload.name)) {
         delete state.items[action.payload.name] 
       }
     },
+    //empties the cart of every item. 
     emptyCart: () => {
       return initialState
     }

@@ -10,9 +10,11 @@ import CartPage from './pages/CartPage';
 import HistoryPage from './pages/HistoryPage';
 import InfoPage from './pages/InfoPage';
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+/**
+ * Dashboard that holds the Single Page Application.
+ */
 export default function Dashboard() {
   
   return (
@@ -33,6 +35,7 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
+          {/* Routes. Default route to /home */}
           <Routes>
             <Route path="*" element={<Navigate to="home" replace />} />
             <Route path="home" element={<HomePage />} />

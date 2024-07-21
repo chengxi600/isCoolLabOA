@@ -1,5 +1,8 @@
 import { Box, Typography } from "@mui/material";
 
+/**
+ * Info Page
+ */
 export default function InfoPage() {
 
     return (

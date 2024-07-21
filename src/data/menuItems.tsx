@@ -1,3 +1,7 @@
+/**
+ * Mock Data for the menu. Each menu item has an id, title, image, description, and the price. 
+ */
+
 export interface MenuItemProps {
     id: number,
     title: string,
@@ -76,10 +80,4 @@ export const drinkData: MenuItemProps[] = [
         description: 'Because we’re feeling all fancy-like and ready to get our refreshing drink game going for the summer, I present to you passion fruit iced tea. It’s the perfect drink for a hot summer day – it’s tropical, sweet, and easier to make than you think!',
         price: 7
     }
-]
-
-export const allMenuData = [
-    ...riceData,
-    ...noodleData,
-    ...drinkData
 ]

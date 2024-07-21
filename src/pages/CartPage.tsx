@@ -1,23 +1,32 @@
-import { Typography, Grid, List, Paper, Divider, Box, Button, Alert, Snackbar, IconButton } from "@mui/material";
+import { Typography, Grid, List, Paper, Divider, Box, Button, Alert, Snackbar } from "@mui/material";
 import CartItem from "../components/CartItem";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import React, { useMemo } from "react";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import CloseIcon from '@mui/icons-material/Close';
 import { addToHistory, Order } from "../data/historySlice";
 import { emptyCart } from "../data/cartSlice";
 
+/**
+ * Page where users can see their items in cart, change the quantity per item, and submit order
+ */
 export default function CartPage() {
 
   const dispatch = useAppDispatch();
+  
+  //cart items from store
   const items = useAppSelector(state => state.cart.items);
+
+  //states for snackbar
   const [open, setOpen] = React.useState(false);
+
+  //total price of items in cart
   const totalPrice = useMemo(() => {
     let total = 0
     for(let prop in items) total += (items[prop].price * items[prop].quantity)
     return total
   }, [items])
 
+  //construct cart items
   let cartList = [];
   for(let prop in items) {
     cartList.push(
@@ -29,6 +38,7 @@ export default function CartPage() {
   }
 
   const handleSubmit = () => {
+    //trigger snackbar
     setOpen(true)
 
     const payload: Order = {
@@ -36,7 +46,7 @@ export default function CartPage() {
       totalPrice: totalPrice
     }
 
-    //submit order
+    //add current cart to history and empty cart
     dispatch(addToHistory(payload))
     dispatch(emptyCart())
   }

@@ -6,6 +6,10 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { addOneToCart, ItemInfo, removeAllFromCart, removeOneFromCart } from "../data/cartSlice";
 import { useAppDispatch } from "../hooks";
 
+/**
+ * ListItem component for an item in the cart 
+ * @param itemInfo an ItemInfo with data to be displayed in the component.  
+ */
 export default function CartItem({
   itemInfo
 }: {
