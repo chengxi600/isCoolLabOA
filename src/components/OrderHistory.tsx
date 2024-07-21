@@ -6,24 +6,26 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
 import { Typography } from '@mui/material';
-import { MenuItemProps } from '../data/menuItems';
-import { useEffect, useState } from 'react';
+import { Order } from '../data/historySlice';
 
-export default function Order({
+export default function OrderHistory({
   orderNum,
-  menuDataArr
+  order
 }: {
     orderNum: number,
-    menuDataArr: MenuItemProps[]
+    order: Order
 }) {
 
-  const [totalPrice, setTotalPrice] = useState<number | null>(null);
-
-  useEffect(() => {
-    let total = 0;
-    menuDataArr.map((menuData) => total += menuData.price)
-    setTotalPrice(total)
-  }, [menuDataArr])
+  let historyList = [];
+  for(let prop in order.order) {
+    historyList.push(
+      <TableRow>
+        <TableCell>{order.order[prop].name}</TableCell>
+        <TableCell>x{order.order[prop].quantity}</TableCell>
+        <TableCell align="right">{`$${order.order[prop].price} NTD`}</TableCell>
+      </TableRow>
+    )
+  }
 
   return (
     <React.Fragment>
@@ -37,16 +39,10 @@ export default function Order({
           </TableRow>
         </TableHead>
         <TableBody>
-          {menuDataArr.map((menuData) => (
-            <TableRow>
-              <TableCell>{menuData.title}</TableCell>
-              <TableCell>x1</TableCell>
-              <TableCell align="right">{`$${menuData.price} NTD`}</TableCell>
-            </TableRow>
-          ))}
+          {historyList}
         </TableBody>
       </Table>
-      <Typography align="right" padding={3}>{`Total Amount: $${totalPrice} NTD`}</Typography>
+      <Typography align="right" padding={3}>{`Total Amount: $${order.totalPrice} NTD`}</Typography>
     </React.Fragment>
   );
 }
