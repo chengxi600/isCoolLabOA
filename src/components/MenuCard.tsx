@@ -36,27 +36,6 @@ export default function MenuCard({
       }
       dispatch(addOneToCart(item))
     };
-  
-    const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-  
-      setOpen(false);
-    };
-  
-    const action = (
-      <React.Fragment>
-        <IconButton
-          size="small"
-          aria-label="close"
-          color="inherit"
-          onClick={handleClose}
-        >
-          <CloseIcon fontSize="small" />
-        </IconButton>
-      </React.Fragment>
-    );
 
     return (
         <Card elevation={3} sx={{ maxWidth: 345, height: "100%", display: "flex", flexDirection: "column" }}>
@@ -83,8 +62,7 @@ export default function MenuCard({
               <Snackbar
                   open={open}
                   autoHideDuration={1000}
-                  onClose={handleClose}
-                  action={action}
+                  onClose={() => setOpen(false)}
               >
                   <Alert variant="filled" severity="success">Added to Cart!.</Alert>
               </Snackbar>

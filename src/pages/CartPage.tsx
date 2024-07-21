@@ -41,27 +41,6 @@ export default function CartPage() {
     dispatch(emptyCart())
   }
 
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
-
     return (
       <Grid container>
         <Grid item xs={6} md={6} margin={3}>
@@ -83,8 +62,7 @@ export default function CartPage() {
             <Snackbar
                   open={open}
                   autoHideDuration={1000}
-                  onClose={handleClose}
-                  action={action}
+                  onClose={() => setOpen(false)}
               >
                   <Alert variant="filled" severity="success">Order Submitted!</Alert>
               </Snackbar>
