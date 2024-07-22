@@ -35,6 +35,7 @@ export default function CartItem({
       }
     >
       <ListItemText
+        data-testId={`${itemInfo.name}_label`}
         primary={`${itemInfo.name} - $${itemInfo.price} NTD`}
         secondary={`x${itemInfo.quantity}`}
       />
