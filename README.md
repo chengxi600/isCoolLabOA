@@ -1,6 +1,8 @@
 # IsCoolLab Assignment
 
-This project was done for the offline test assignment for IsCoolLab
+This project was done for the offline test assignment for IsCoolLab.
+
+Deployed with Netlify here: https://main--gorgeous-palmier-5ce9d0.netlify.app/
 
 ## Table of Contents
 - [Features](#features)
